@@ -1,0 +1,16 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<p><strong>Book Title: </strong> {{ bookinstance.book }}</p>
+
+<p
+  class="{% if bookinstance.status == 'a' %}text-success{% elif bookinstance.status == 'm' %}text-danger{% else %}text-warning{% endif %}">
+  {{ bookinstance.get_status_display }}
+</p>
+{% if bookinstance.status != 'a' %}
+  <p><strong>Due to be returned:</strong> {{ bookinstance.due_back }}</p>
+{% endif %}
+<p><strong>Imprint:</strong> {{ bookinstance.imprint }}</p>
+<p class="text-muted"><strong>Id:</strong> {{ bookinstance.id }}</p>
+
+{% endblock %}
